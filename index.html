@@ -1,0 +1,590 @@
+<!doctype html>
+<html lang="es" class="h-full">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Grace Store JK - Artesanías con Amor</title>
+  <script src="/_sdk/element_sdk.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&amp;family=Outfit:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+  <style>
+   
+
+    body {
+      box-sizing: border-box;
+    }
+    
+    .font-display {
+      font-family: 'Fredoka', sans-serif;
+    }
+    
+    .font-body {
+      font-family: 'Outfit', sans-serif;
+    }
+
+    .hero-gradient {
+      background: linear-gradient(135deg, #b8a4e5 0%, #a8d8ea 50%, #e0c3fc 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Floating shapes animation */
+    .floating-shape {
+      position: absolute;
+      border-radius: 50%;
+      animation: float 6s ease-in-out infinite;
+      opacity: 0.3;
+    }
+
+    .shape-1 {
+      width: 200px;
+      height: 200px;
+      background: #d4a5f9;
+      top: 10%;
+      left: 5%;
+      animation-delay: 0s;
+    }
+
+    .shape-2 {
+      width: 150px;
+      height: 150px;
+      background: #a8e6f5;
+      bottom: 15%;
+      right: 10%;
+      animation-delay: 2s;
+    }
+
+    .shape-3 {
+      width: 100px;
+      height: 100px;
+      background: #c4b5fd;
+      top: 60%;
+      left: 15%;
+      animation-delay: 4s;
+    }
+
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0px) scale(1);
+      }
+      50% {
+        transform: translateY(-30px) scale(1.1);
+      }
+    }
+
+    .product-card {
+      background: white;
+      border-radius: 24px;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    }
+
+    .product-card:hover {
+      transform: translateY(-12px) rotate(2deg);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #b8a4e5 0%, #a8d8ea 100%);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-primary::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.3);
+      transform: translate(-50%, -50%);
+      transition: width 0.6s, height 0.6s;
+    }
+
+    .btn-primary:hover::before {
+      width: 300px;
+      height: 300px;
+    }
+
+    .btn-primary:hover {
+      transform: scale(1.05);
+      box-shadow: 0 10px 30px rgba(184, 164, 229, 0.4);
+    }
+
+    .nav-link {
+      position: relative;
+      transition: all 0.3s ease;
+    }
+
+    .nav-link:hover {
+      transform: translateY(-2px);
+    }
+
+    .product-emoji {
+      font-size: 80px;
+      animation: bounce 2s ease-in-out infinite;
+      display: inline-block;
+    }
+
+    @keyframes bounce {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-10px);
+      }
+    }
+
+    .sticker-badge {
+      position: absolute;
+      top: -10px;
+      right: -10px;
+      background: linear-gradient(135deg, #ffd9e8 0%, #ffb3d9 100%);
+      color: #8b5cf6;
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-weight: bold;
+      font-size: 12px;
+      transform: rotate(15deg);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    .input-field {
+      background: white;
+      border: 3px solid #b8a4e5;
+      transition: all 0.3s ease;
+      border-radius: 16px;
+    }
+
+    .input-field:focus {
+      outline: none;
+      border-color: #a8d8ea;
+      box-shadow: 0 0 0 4px rgba(168, 216, 234, 0.2);
+      transform: scale(1.02);
+    }
+
+    .wavy-divider {
+      position: relative;
+      height: 80px;
+      background: white;
+    }
+
+    .wavy-divider::before {
+      content: '';
+      position: absolute;
+      top: -40px;
+      left: 0;
+      width: 100%;
+      height: 40px;
+      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 120' preserveAspectRatio='none'%3E%3Cpath d='M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z' fill='%23ffffff'/%3E%3C/svg%3E");
+      background-size: cover;
+    }
+
+    .success-message {
+      background: linear-gradient(135deg, #a8e6f5 0%, #b8f5cd 100%);
+      color: #059669;
+      padding: 16px 24px;
+      border-radius: 16px;
+      font-weight: 600;
+      box-shadow: 0 4px 20px rgba(168, 230, 245, 0.3);
+    }
+
+    .icon-badge {
+      width: 50px;
+      height: 50px;
+      background: linear-gradient(135deg, #b8a4e5 0%, #d4a5f9 100%);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+  </style>
+
+<!-- Botones flotantes -->
+<div class="fixed bottom-6 right-6 flex flex-col gap-4 z-50">
+
+  <!-- WhatsApp -->
+  <a href="https://wa.me/50767797134"
+     target="_blank"
+     class="w-14 h-14 bg-green-500 rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-all">
+    <svg class="w-7 h-7 text-white" fill="currentColor" viewBox="0 0 24 24">
+      <path d="M12.04 2.004c-5.523 0-10.01 4.488-10.01 10.01 0 1.767.465 3.49 1.35 5.005L2 22l5.143-1.35a9.94 9.94 0 004.897 1.255h.004c5.522 0 10.01-4.487 10.01-10.01 0-5.523-4.488-10.01-10.01-10.01zm5.83 14.387c-.244.685-1.435 1.307-1.973 1.382-.538.075-1.23.106-1.984-.127-.458-.145-1.044-.339-1.803-.668-3.17-1.37-5.243-4.59-5.403-4.802-.16-.212-1.29-1.72-1.29-3.284 0-1.565.819-2.337 1.11-2.656.292-.319.638-.398.85-.398.213 0 .425.002.61.01.197.01.46-.075.72.548.27.64.919 2.21.998 2.37.08.16.133.35.027.562-.106.212-.16.35-.319.54-.159.19-.335.425-.478.572-.16.16-.326.333-.14.652.186.319.826 1.36 1.775 2.202 1.22 1.085 2.246 1.423 2.565 1.584.319.16.505.133.691-.08.186-.212.796-.926 1.009-1.245.213-.319.425-.266.72-.16.292.106 1.857.876 2.174 1.035.319.159.531.239.61.372.08.133.08.768-.16 1.453z"/>
+    </svg>
+  </a>
+
+  <!-- Instagram -->
+  <a href="https://www.instagram.com/grace_storekj/"
+     target="_blank"
+     class="w-14 h-14 bg-gradient-to-tr from-pink-500 to-purple-600 rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-all">
+    <svg class="w-7 h-7 text-white" fill="currentColor" viewBox="0 0 24 24">
+      <path d="M7.75 2h8.5A5.75 5.75 0 0122 7.75v8.5A5.75 5.75 0 0116.25 22h-8.5A5.75 5.75 0 012 16.25v-8.5A5.75 5.75 0 017.75 2zm8.5 1.5h-8.5A4.25 4.25 0 003.5 7.75v8.5A4.25 4.25 0 007.75 20.5h8.5a4.25 4.25 0 004.25-4.25v-8.5a4.25 4.25 0 00-4.25-4.25zM12 7a5 5 0 110 10 5 5 0 010-10zm0 1.5a3.5 3.5 0 100 7 3.5 3.5 0 000-7zm5.25-.88a1.13 1.13 0 110 2.26 1.13 1.13 0 010-2.26z"/>
+    </svg>
+  </a>
+
+</div>
+
+
+
+
+  <style>@view-transition { navigation: auto; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+ </head>
+ <body class="h-full font-body">
+  <div class="h-full w-full overflow-auto hero-gradient"><!-- Floating shapes background -->
+   <div class="floating-shape shape-1"></div>
+   <div class="floating-shape shape-2"></div>
+   <div class="floating-shape shape-3"></div><!-- Navigation -->
+   <nav class="relative z-50 px-6 py-5">
+    <div class="max-w-7xl mx-auto flex items-center justify-between">
+     <div class="flex items-center gap-3">
+      <div class="icon-badge"><span>✨</span>
+      </div>
+      <div>
+       <h1 id="storeName" class="font-display font-bold text-white text-2xl leading-none">Grace Store JK</h1>
+       <p id="tagline" class="text-white text-xs font-medium opacity-90">Artesanías hechas con amor</p>
+      </div>
+     </div>
+     <div class="hidden md:flex gap-6"><a href="#home" class="nav-link text-white font-semibold text-sm">Inicio</a> <a href="#productos" class="nav-link text-white font-semibold text-sm">Productos</a> <a href="#contacto" class="nav-link text-white font-semibold text-sm">Contacto</a>
+     </div><button class="md:hidden text-white">
+      <svg class="w-7 h-7" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M4 6h16M4 12h16M4 18h16" />
+      </svg></button>
+    </div>
+   </nav><!-- Hero Section -->
+   <header id="home" class="relative z-10 px-6 py-16 md:py-24">
+    <div class="max-w-7xl mx-auto text-center">
+     <div class="mb-6"><span class="text-8xl product-emoji">🎨</span>
+     </div>
+     <h2 id="heroTitle" class="font-display font-bold text-white text-5xl md:text-7xl mb-6 leading-tight drop-shadow-lg">Productos Únicos y Artesanales</h2>
+     <p id="heroSubtitle" class="text-white text-xl md:text-2xl mb-10 max-w-2xl mx-auto font-medium drop-shadow">Cada pieza cuenta una historia ✨</p><button id="ctaButton" class="btn-primary text-white font-bold px-12 py-5 rounded-full text-xl shadow-xl relative z-10"> Ver Productos 🛍️ </button>
+    </div>
+   </header><!-- Products Section with Wavy Divider -->
+   <div class="wavy-divider"></div>
+   <section id="productos" class="relative z-10 px-6 py-16 bg-white">
+    <div class="max-w-7xl mx-auto">
+     <h3 id="sectionTitle" class="font-display font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-blue-300 text-4xl md:text-6xl text-center mb-4">Lo Que Creo Para Ti</h3>
+     <p class="text-center text-gray-600 text-lg mb-12 font-medium">Hecho a mano con mucho amor 💕</p>
+     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"><!-- Product Card 1 - Aretes -->
+      <div class="product-card p-6 relative">
+       <div class="sticker-badge">
+        ¡Popular!
+       </div>
+       <div class="bg-gradient-to-br from-pink-100 to-purple-100 rounded-3xl p-8 mb-6 flex items-center justify-center"><span class="product-emoji">💎</span>
+       </div>
+       <h4 class="font-display font-bold text-gray-800 text-2xl mb-2">Aretes Personalizados</h4>
+       <p class="text-gray-600 text-sm mb-4 font-medium">Diseños únicos que brillan contigo</p>
+       <div class="flex items-center justify-between"><span class="text-purple-500 font-bold text-xl">Desde $3</span> <button class="bg-gradient-to-r from-purple-400 to-blue-300 text-white px-6 py-2 rounded-full font-semibold text-sm hover:scale-105 transition-transform"> Ver más → </button>
+       </div>
+      </div><!-- Product Card 2 - Mesetas -->
+      <div class="product-card p-6 relative">
+       <div class="sticker-badge">
+        ¡Nuevo!
+       </div>
+       <div class="bg-gradient-to-br from-yellow-100 to-orange-100 rounded-3xl p-8 mb-6 flex items-center justify-center"><span class="product-emoji">🎨</span>
+       </div>
+       <h4 class="font-display font-bold text-gray-800 text-2xl mb-2">Mesetas Pintadas</h4>
+       <p class="text-gray-600 text-sm mb-4 font-medium">Arte funcional para tu hogar</p>
+       <div class="flex items-center justify-between"><span class="text-purple-500 font-bold text-xl">Desde $4</span> <button class="bg-gradient-to-r from-purple-400 to-blue-300 text-white px-6 py-2 rounded-full font-semibold text-sm hover:scale-105 transition-transform"> Ver más → </button>
+       </div>
+      </div><!-- Product Card 3 - Sudaderas -->
+      <div class="product-card p-6 relative">
+       <div class="bg-gradient-to-br from-blue-100 to-cyan-100 rounded-3xl p-8 mb-6 flex items-center justify-center"><span class="product-emoji">👕</span>
+       </div>
+       <h4 class="font-display font-bold text-gray-800 text-2xl mb-2">Sudaderas Sublimadas</h4>
+       <p class="text-gray-600 text-sm mb-4 font-medium">DTF y sublimación de calidad</p>
+       <div class="flex items-center justify-between"><span class="text-purple-500 font-bold text-xl">Desde $15</span> <button class="bg-gradient-to-r from-purple-400 to-blue-300 text-white px-6 py-2 rounded-full font-semibold text-sm hover:scale-105 transition-transform"> Ver más → </button>
+       </div>
+      </div><!-- Product Card 4 - Tazas -->
+      <div class="product-card p-6 relative">
+       <div class="bg-gradient-to-br from-green-100 to-teal-100 rounded-3xl p-8 mb-6 flex items-center justify-center"><span class="product-emoji">☕</span>
+       </div>
+       <h4 class="font-display font-bold text-gray-800 text-2xl mb-2">Tazas Personalizadas</h4>
+       <p class="text-gray-600 text-sm mb-4 font-medium">Tu diseño favorito en cada sorbo</p>
+       <div class="flex items-center justify-between"><span class="text-purple-500 font-bold text-xl">Desde $6</span> <button class="bg-gradient-to-r from-purple-400 to-blue-300 text-white px-6 py-2 rounded-full font-semibold text-sm hover:scale-105 transition-transform"> Ver más → </button>
+       </div>
+      </div><!-- Product Card 5 - Llaveros -->
+      <div class="product-card p-6 relative">
+       <div class="sticker-badge">
+        ¡Oferta!
+       </div>
+       <div class="bg-gradient-to-br from-red-100 to-pink-100 rounded-3xl p-8 mb-6 flex items-center justify-center"><span class="product-emoji">🔑</span>
+       </div>
+       <h4 class="font-display font-bold text-gray-800 text-2xl mb-2">Llaveros Artesanales</h4>
+       <p class="text-gray-600 text-sm mb-4 font-medium">Pequeños detalles con gran estilo</p>
+       <div class="flex items-center justify-between"><span class="text-purple-500 font-bold text-xl">Desde $5</span> <button class="bg-gradient-to-r from-purple-400 to-blue-300 text-white px-6 py-2 rounded-full font-semibold text-sm hover:scale-105 transition-transform"> Ver más → </button>
+       </div>
+      </div><!-- Product Card 6 - Combos -->
+      <div class="product-card p-6 relative">
+       <div class="sticker-badge">
+        ¡Pack!
+       </div>
+       <div class="bg-gradient-to-br from-purple-100 to-indigo-100 rounded-3xl p-8 mb-6 flex items-center justify-center"><span class="product-emoji">🎁</span>
+       </div>
+       <h4 class="font-display font-bold text-gray-800 text-2xl mb-2">Combos Especiales al Por Mayor</h4>
+       <p class="text-gray-600 text-sm mb-4 font-medium">Sets perfectos para regalar</p>
+       <div class="flex items-center justify-between"><span class="text-purple-500 font-bold text-xl">Desde $30</span> <button class="bg-gradient-to-r from-purple-400 to-blue-300 text-white px-6 py-2 rounded-full font-semibold text-sm hover:scale-105 transition-transform"> Ver más → </button>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section><!-- Contact Section -->
+   <section id="contacto" class="relative z-10 px-6 py-16 bg-gradient-to-br from-pink-50 to-purple-50">
+    <div class="max-w-3xl mx-auto">
+     <div class="bg-white rounded-3xl p-8 md:p-12 shadow-2xl">
+      <div class="text-center mb-8"><span class="text-6xl mb-4 inline-block">💌</span>
+       <h3 id="contactTitle" class="font-display font-bold text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-purple-600 text-4xl mb-2">Hablemos de Tu Pedido</h3>
+       <p class="text-gray-600 font-medium">¡Estoy aquí para crear algo especial para ti!</p>
+      </div>
+      <form id="contactForm" class="space-y-6">
+       <div><label for="name" class="block text-gray-700 text-sm font-bold mb-2 font-display">Tu Nombre</label> <input type="text" id="name" class="input-field w-full px-5 py-4 text-gray-800 font-medium" placeholder="¿Cómo te llamas?" required>
+       </div>
+       <div><label for="email" class="block text-gray-700 text-sm font-bold mb-2 font-display">Email o WhatsApp</label> <input type="text" id="email" class="input-field w-full px-5 py-4 text-gray-800 font-medium" placeholder="¿Cómo te contacto?" required>
+       </div>
+       <div><label for="message" class="block text-gray-700 text-sm font-bold mb-2 font-display">Cuéntame Tu Idea</label> <textarea id="message" rows="4" class="input-field w-full px-5 py-4 text-gray-800 font-medium resize-none" placeholder="¿Qué te gustaría que creara para ti? 🎨" required></textarea>
+       </div><button type="submit" class="btn-primary w-full text-white font-bold px-8 py-5 rounded-full text-lg relative z-10"> Enviar Mensaje 💫 </button>
+      </form>
+      <div id="formMessage" class="mt-6 hidden"></div>
+     </div>
+    </div>
+   </section><!-- Footer -->
+   <footer class="relative z-10 px-6 py-10 bg-gradient-to-br from-purple-600 to-pink-600">
+    <div class="max-w-7xl mx-auto text-center">
+     <div class="flex justify-center gap-6 mb-6">
+      
+       
+       </svg></a>
+       
+
+        <a href="https://www.instagram.com/grace_storekj/" class="w-12 h-12 bg-white bg-opacity-20 backdrop-blur rounded-full flex items-center justify-center text-white hover:bg-opacity-30 transition-all hover:scale-110"> 
+       <svg class="w-6 h-6" fill="currentColor" viewbox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+       
+       
+        </svg></a> <a href="https://wa.me/67797134" class="w-12 h-12 bg-white bg-opacity-20 backdrop-blur rounded-full flex items-center justify-center text-white hover:bg-opacity-30 transition-all hover:scale-110">
+       <svg class="w-6 h-6" fill="currentColor" viewbox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z" />
+        
+       </svg></a>
+
+
+     </div>
+     <p id="footerText" class="text-white font-display font-semibold text-lg">©️ 2024 Grace Store JK - Hecho a mano con ❤️</p>
+     <p class="text-white text-sm mt-2 opacity-90">Cada compra apoya el arte local 🎨✨</p>
+    </div>
+   </footer>
+  </div>
+  <script>
+    const defaultConfig = {
+      background_primary: '#ff6b9d',
+      background_secondary: '#ffa07a',
+      accent_primary: '#c471ed',
+      accent_secondary: '#ffd93d',
+      text_color: '#ffffff',
+      font_family: 'Outfit',
+      font_size: 16,
+      store_name: 'Grace Store JK',
+      tagline: 'Artesanías hechas con amor',
+      hero_title: 'Productos Únicos y Artesanales',
+      hero_subtitle: 'Cada pieza cuenta una historia ✨',
+      cta_button: 'Ver Productos 🛍️',
+      section_title: 'Lo Que Creo Para Ti',
+      contact_title: 'Hablemos de Tu Pedido',
+      footer_text: '©️ 2024 Grace Store JK - Hecho a mano con ❤️'
+    };
+
+    async function onConfigChange(config) {
+      const baseSize = config.font_size || defaultConfig.font_size;
+      const customFont = config.font_family || defaultConfig.font_family;
+      const baseFontStack = 'sans-serif';
+      
+      // Update gradient colors
+      const bgPrimary = config.background_primary || defaultConfig.background_primary;
+      const bgSecondary = config.background_secondary || defaultConfig.background_secondary;
+      const accentPrimary = config.accent_primary || defaultConfig.accent_primary;
+      const textColor = config.text_color || defaultConfig.text_color;
+      
+      document.querySelector('.hero-gradient').style.background = 
+        `linear-gradient(135deg, ${bgPrimary} 0%, ${bgSecondary} 50%, ${config.accent_secondary || defaultConfig.accent_secondary} 100%)`;
+      
+      // Update fonts
+      document.body.style.fontFamily = `${customFont}, ${baseFontStack}`;
+      
+      // Update font sizes
+      document.getElementById('storeName').style.fontSize = `${baseSize * 1.5}px`;
+      document.getElementById('tagline').style.fontSize = `${baseSize * 0.75}px`;
+      document.getElementById('heroTitle').style.fontSize = `${baseSize * 3.5}px`;
+      document.getElementById('heroSubtitle').style.fontSize = `${baseSize * 1.25}px`;
+      document.getElementById('ctaButton').style.fontSize = `${baseSize * 1.25}px`;
+      document.getElementById('sectionTitle').style.fontSize = `${baseSize * 3}px`;
+      document.getElementById('contactTitle').style.fontSize = `${baseSize * 2.5}px`;
+      document.getElementById('footerText').style.fontSize = `${baseSize * 1.125}px`;
+      
+      // Update text content
+      document.getElementById('storeName').textContent = config.store_name || defaultConfig.store_name;
+      document.getElementById('tagline').textContent = config.tagline || defaultConfig.tagline;
+      document.getElementById('heroTitle').textContent = config.hero_title || defaultConfig.hero_title;
+      document.getElementById('heroSubtitle').textContent = config.hero_subtitle || defaultConfig.hero_subtitle;
+      document.getElementById('ctaButton').textContent = config.cta_button || defaultConfig.cta_button;
+      document.getElementById('sectionTitle').textContent = config.section_title || defaultConfig.section_title;
+      document.getElementById('contactTitle').textContent = config.contact_title || defaultConfig.contact_title;
+      document.getElementById('footerText').textContent = config.footer_text || defaultConfig.footer_text;
+      
+      // Update button gradient
+      const style = document.createElement('style');
+      style.textContent = `
+        .btn-primary { 
+          background: linear-gradient(135deg, ${bgPrimary} 0%, ${accentPrimary} 100%) !important; 
+        }
+      `;
+      document.head.appendChild(style);
+    }
+
+
+
+
+
+      // =========================
+  // CONFIGURACIÓN WHATSAPP
+  // =========================
+  const WHATSAPP_NUMBER = "50767797134"; 
+  // Ejemplo Panamá: 50761234567 (sin + ni espacios)
+  // =========================
+  // FORMULARIO → WHATSAPP
+  // =========================
+  document.getElementById("contactForm").addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    const name = document.getElementById("name").value.trim();
+    const contact = document.getElementById("email").value.trim();
+    const message = document.getElementById("message").value.trim();
+
+    if (!name || !contact || !message) {
+      alert("Por favor completa todos los campos 💕");
+      return;
+    }
+
+    const whatsappMessage = `
+Hola ✨ Soy ${name}
+📞 Contacto: ${contact}
+
+🎨 Pedido:
+${message}
+
+Me gustaría más información 💖
+    `;
+
+   const whatsappURL = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(whatsappMessage)}`;
+
+
+    // Abrir WhatsApp
+    window.open(whatsappURL, "_blank");
+
+    // Mensaje visual de éxitoS
+    const messageDiv = document.getElementById("formMessage");
+    messageDiv.className = "mt-6 success-message text-center";
+    messageDiv.textContent = "✓ Abriendo WhatsApp... 💬";
+    messageDiv.classList.remove("hidden");
+
+    this.reset();
+  });
+
+  // =========================
+  // SCROLL SUAVE
+  // =========================
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener("click", function (e) {
+      e.preventDefault();
+      const target = document.querySelector(this.getAttribute("href"));
+      if (target) {
+        target.scrollIntoView({ behavior: "smooth" });
+      }
+    });
+  });
+
+
+
+
+
+
+    // Smooth scrolling
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+
+    // Initialize SDK
+    if (window.elementSdk) {
+      window.elementSdk.init({
+        defaultConfig,
+        onConfigChange,
+        mapToCapabilities: (config) => ({
+          recolorables: [
+            {
+              get: () => config.background_primary || defaultConfig.background_primary,
+              set: (value) => {
+                config.background_primary = value;
+                window.elementSdk.setConfig({ background_primary: value });
+              }
+            },
+            {
+              get: () => config.background_secondary || defaultConfig.background_secondary,
+              set: (value) => {
+                config.background_secondary = value;
+                window.elementSdk.setConfig({ background_secondary: value });
+              }
+            },
+            {
+              get: () => config.accent_primary || defaultConfig.accent_primary,
+              set: (value) => {
+                config.accent_primary = value;
+                window.elementSdk.setConfig({ accent_primary: value });
+              }
+            },
+            {
+              get: () => config.text_color || defaultConfig.text_color,
+              set: (value) => {
+                config.text_color = value;
+                window.elementSdk.setConfig({ text_color: value });
+              }
+            }
+          ],
+          borderables: [],
+          fontEditable: {
+            get: () => config.font_family || defaultConfig.font_family,
+            set: (value) => {
+              config.font_family = value;
+              window.elementSdk.setConfig({ font_family: value });
+            }
+          },
+          fontSizeable: {
+            get: () => config.font_size || defaultConfig.font_size,
+            set: (value) => {
+              config.font_size = value;
+              window.elementSdk.setConfig({ font_size: value });
+            }
+          }
+        }),
+        mapToEditPanelValues: (config) => new Map([
+          ['store_name', config.store_name || defaultConfig.store_name],
+          ['tagline', config.tagline || defaultConfig.tagline],
+          ['hero_title', config.hero_title || defaultConfig.hero_title],
+          ['hero_subtitle', config.hero_subtitle || defaultConfig.hero_subtitle],
+          ['cta_button', config.cta_button || defaultConfig.cta_button],
+          ['section_title', config.section_title || defaultConfig.section_title],
+          ['contact_title', config.contact_title || defaultConfig.contact_title],
+          ['footer_text', config.footer_text || defaultConfig.footer_text]
+        ])
+      });
+    }
+  </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9ba4e588f5e91a50',t:'MTc2NzgwNDAyMy4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
