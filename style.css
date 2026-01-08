@@ -31,5 +31,9 @@
   .nav.active {
     display: flex;
   }
+  section {
+  scroll-margin-top: 90px;
+}
+
 }
 
