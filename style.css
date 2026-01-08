@@ -4,11 +4,13 @@
   display: none;
 }
 
+/* Menú */
 .nav {
   display: flex;
   gap: 20px;
 }
 
+/* MÓVIL */
 @media (max-width: 768px) {
   .menu-btn {
     display: block;
@@ -30,3 +32,4 @@
     display: flex;
   }
 }
+
